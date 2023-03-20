@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="excel_huge_excel_poi" />
+        <module name="Tools" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="excel_huge_excel_poi" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

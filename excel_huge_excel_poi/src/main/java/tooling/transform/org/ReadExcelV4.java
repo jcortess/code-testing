@@ -3,7 +3,6 @@ package tooling.transform.org;
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,15 +17,17 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class ReadExcelV4 {
 
-    public void TrasformExcelToJson(String excelPath, String jsonPath) throws IOException {
+    public String TrasformExcelToJson(String excelPath, String jsonPath) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        boolean transformStatus = false;
 
-        try (InputStream is = new FileInputStream("/jcortessFiles/coding/huge_excel_files/500000_Records_Data_Test.xlsx");
+        final String[] status = new String[1];
+
+
+        try (InputStream is = new FileInputStream(excelPath);
              ReadableWorkbook wb = new ReadableWorkbook(is)) {
 
-            String path = "/mydata/hugeExcelOutput/500000_Records_Data_Test.json";
+            String path = jsonPath;
             File file = new File(path);
             boolean fileExists = file.exists();
 
@@ -100,9 +101,14 @@ public class ReadExcelV4 {
                     e.printStackTrace();
                 }
                 watch.stop();
-                System.out.println("Processing time :: " + watch.getTime(TimeUnit.MILLISECONDS));
+                status[0] = "0";
+                //System.out.println("Processing time :: " + watch.getTime(TimeUnit.MILLISECONDS));
             });
-            transformStatus = true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            status[0] = e.toString();
         }
+        return status[0];
     }
 }
