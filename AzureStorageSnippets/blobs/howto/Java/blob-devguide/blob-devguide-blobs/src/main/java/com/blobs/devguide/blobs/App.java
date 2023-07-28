@@ -29,8 +29,8 @@ public class App {
         //endregion
 
         //region Create a service client using the account key
-        //String accountName = "1a02540b75stg";
-        //String accountKey = "g52IrdfVLEp41lMas0AqHUm3n4m6/B180sUb195Fhh+rLc4uh4WtIBqL2ljQiSV7zWdSii0n+DeN+AStbaDK0Q==";
+        //String accountName = "";
+        //String accountKey = "";
         //BlobServiceClient blobServiceClient = GetBlobServiceClientAccountKey(accountName, accountKey);
 
         //endregion
